@@ -27,6 +27,14 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         //kullanıcın yerini belirlemek için
         locationManager.startUpdatingLocation()
         
+        // uzun bastığında çağırılacak
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(chooseLocation(gestureRecognizer:)))
+        gestureRecognizer.minimumPressDuration = 3
+        mapView.addGestureRecognizer(gestureRecognizer)
+        
+    }
+    @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer) {
+            
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
