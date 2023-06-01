@@ -35,6 +35,18 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     }
     @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer) {
             
+        // pinleme işlemi
+        if gestureRecognizer.state == .began {
+            let touchedPoint = gestureRecognizer.location(in: self.mapView)
+            let touchedCoordinates = self.mapView.convert(touchedPoint, toCoordinateFrom: self.mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = touchedCoordinates
+            annotation.title = "New Annotation"
+            annotation.subtitle = "Travel Book"
+            self.mapView.addAnnotation(annotation)
+        }
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
