@@ -11,7 +11,7 @@ import CoreLocation
 import CoreData
 
 class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var nameText: UITextField!
     
     @IBOutlet weak var commentText: UITextField!
@@ -23,6 +23,12 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     
     var selectedTitle = ""
     var selectedTitleID : UUID?
+    
+    var annotationTitle = ""
+    var annotationSubTitle = ""
+    var annotationLatitude = Double()
+    var annotationLongitude = Double()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +49,54 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         
         if selectedTitle != "" {
             // coreData
-            let stringUUID = selectedTitleID!.uuidString
-            print(stringUUID)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+            let idString = selectedTitleID!.uuidString
+            fetchRequest.predicate = NSPredicate(format: "id = %@", idString)
+            fetchRequest.returnsObjectsAsFaults = false
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject]{
+                        if let title = result.value(forKey: "title") as? String {
+                            annotationTitle = title
+                            if let subtitle = result.value(forKey: "subtitle") as? String {
+                                annotationSubTitle = subtitle
+                                if let latitude = result.value(forKey: "latitude") as? Double {
+                                    annotationLatitude = latitude
+                                    if let longitude = result.value(forKey: "longitude") as? Double {
+                                        annotationLongitude = longitude
+                                        
+                                        let annotation = MKPointAnnotation()
+                                        annotation.title = annotationTitle
+                                        annotation.subtitle = annotationSubTitle
+                                        let coordinate = CLLocationCoordinate2D(latitude: annotationLatitude, longitude: annotationLongitude)
+                                        annotation.coordinate = coordinate
+                                        
+                                        mapView.addAnnotation(annotation)
+                                        nameText.text = annotationTitle
+                                        commentText.text = annotationSubTitle
+                                    }
+                                }
+                            }
+                        }
+                    
+                    }
+                }
+            } catch {
+                print("error")
+            }
+            
         } else {
-           // Add New Data
+            // Add New Data
         }
         
     }
     @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer) {
-            
+        
         // pinleme işlemi
         if gestureRecognizer.state == .began {
             let touchedPoint = gestureRecognizer.location(in: self.mapView)
@@ -67,7 +112,7 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         }
         
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //enlem ve boylam ile konumu getirmeye yarıyor
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
@@ -76,7 +121,7 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
     }
-
+    
     @IBAction func saveButtonClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -88,7 +133,7 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         newPlace.setValue(chosenLongitude, forKey: "longitude")
         newPlace.setValue(UUID(), forKey: "id")
         do{
-        try context.save()
+            try context.save()
             print("success")
         } catch {
             print("error")
