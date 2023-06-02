@@ -14,6 +14,7 @@
 		590E07602A28AD2100EA4375 /* TravelBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 590E075E2A28AD2100EA4375 /* TravelBook.xcdatamodeld */; };
 		590E07622A28AD2A00EA4375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590E07612A28AD2A00EA4375 /* Assets.xcassets */; };
 		590E07652A28AD2A00EA4375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590E07632A28AD2A00EA4375 /* LaunchScreen.storyboard */; };
+		590E07902A29CD8F00EA4375 /* ListVliewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590E078F2A29CD8F00EA4375 /* ListVliewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		590E07612A28AD2A00EA4375 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		590E07642A28AD2A00EA4375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		590E07662A28AD2A00EA4375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		590E078F2A29CD8F00EA4375 /* ListVliewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVliewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				590E07552A28AD2100EA4375 /* AppDelegate.swift */,
 				590E07572A28AD2100EA4375 /* SceneDelegate.swift */,
 				590E07592A28AD2100EA4375 /* ViewController.swift */,
+				590E078F2A29CD8F00EA4375 /* ListVliewController.swift */,
 				590E075B2A28AD2100EA4375 /* Main.storyboard */,
 				590E07612A28AD2A00EA4375 /* Assets.xcassets */,
 				590E07632A28AD2A00EA4375 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				590E07602A28AD2100EA4375 /* TravelBook.xcdatamodeld in Sources */,
 				590E075A2A28AD2100EA4375 /* ViewController.swift in Sources */,
+				590E07902A29CD8F00EA4375 /* ListVliewController.swift in Sources */,
 				590E07562A28AD2100EA4375 /* AppDelegate.swift in Sources */,
 				590E07582A28AD2100EA4375 /* SceneDelegate.swift in Sources */,
 			);

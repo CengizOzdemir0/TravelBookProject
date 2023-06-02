@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JZg-2v-TsB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,6 +8,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--List Vliew Controller-->
+        <scene sceneID="OYn-Zt-VO1">
+            <objects>
+                <viewController id="MqC-Ka-dGT" customClass="ListVliewController" customModule="TravelBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qpH-Et-UOH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVl-Jc-irB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TVw-Oa-iZr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PVl-Jc-irB" firstAttribute="top" secondItem="TVw-Oa-iZr" secondAttribute="top" id="24X-Gq-jRJ"/>
+                            <constraint firstItem="PVl-Jc-irB" firstAttribute="leading" secondItem="TVw-Oa-iZr" secondAttribute="leading" id="4uu-WM-K3E"/>
+                            <constraint firstItem="TVw-Oa-iZr" firstAttribute="bottom" secondItem="PVl-Jc-irB" secondAttribute="bottom" id="W57-6g-Hhd"/>
+                            <constraint firstItem="TVw-Oa-iZr" firstAttribute="trailing" secondItem="PVl-Jc-irB" secondAttribute="trailing" id="ezY-of-C4W"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cc8-kF-vqy"/>
+                    <connections>
+                        <outlet property="tableView" destination="PVl-Jc-irB" id="MrL-d4-HkW"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toViewController" id="QRx-io-7pj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NlA-Ei-2jN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92.753623188405811" y="118.52678571428571"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,15 +49,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-eZ-tgQ">
-                                <rect key="frame" x="0.0" y="245" width="414" height="557"/>
+                                <rect key="frame" x="0.0" y="289" width="414" height="513"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-lR-n75">
-                                <rect key="frame" x="28" y="103" width="341" height="35"/>
+                                <rect key="frame" x="28" y="147" width="341" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQe-Cf-aEp">
-                                <rect key="frame" x="28" y="145" width="341" height="35"/>
+                                <rect key="frame" x="28" y="189" width="341" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -61,6 +93,7 @@
                             <constraint firstItem="7Ud-lR-n75" firstAttribute="leading" secondItem="CQe-Cf-aEp" secondAttribute="leading" id="ykL-SS-rLr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="N0R-cn-6Yy"/>
                     <connections>
                         <outlet property="commentText" destination="CQe-Cf-aEp" id="sKg-xd-6BC"/>
                         <outlet property="mapView" destination="yP9-eZ-tgQ" id="ECL-Jg-iXz"/>
@@ -69,7 +102,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="109.82142857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="858-U5-AKv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JZg-2v-TsB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CyJ-F9-dh1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MqC-Ka-dGT" kind="relationship" relationship="rootViewController" id="KOy-9z-RWo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhA-U0-soG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-817.39130434782612" y="118.52678571428571"/>
         </scene>
     </scenes>
     <resources>
