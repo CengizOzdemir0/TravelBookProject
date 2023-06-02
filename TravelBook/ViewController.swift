@@ -81,6 +81,9 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
                                         commentText.text = annotationSubTitle
                                         
                                         locationManager.stopUpdatingLocation()
+                                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                                        let region = MKCoordinateRegion(center: coordinate, span: span)
+                                        mapView.setRegion(region, animated: true)
                                     }
                                 }
                             }
