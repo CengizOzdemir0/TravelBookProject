@@ -21,6 +21,9 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     var chosenLatitude = Double()
     var chosenLongitude = Double()
     
+    var selectedTitle = ""
+    var selectedTitleID : UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // map view Delegasyonunu yapılması
@@ -37,6 +40,14 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(chooseLocation(gestureRecognizer:)))
         gestureRecognizer.minimumPressDuration = 3
         mapView.addGestureRecognizer(gestureRecognizer)
+        
+        if selectedTitle != "" {
+            // coreData
+            let stringUUID = selectedTitleID!.uuidString
+            print(stringUUID)
+        } else {
+           // Add New Data
+        }
         
     }
     @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer) {

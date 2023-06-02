@@ -14,6 +14,9 @@ class ListVliewController: UIViewController, UITableViewDelegate, UITableViewDat
     var titleArraty = [String]()
     var idArray = [UUID]()
     
+    var chosenTitle = ""
+    var chosenUUID : UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +72,16 @@ class ListVliewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
 
- 
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenTitle = titleArraty[indexPath.row]
+        chosenUUID = idArray[indexPath.row]
+        performSegue(withIdentifier: "toViewController", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toViewController" {
+            let destinationVC = segue.destination as! ViewController
+            destinationVC.selectedTitle = chosenTitle
+            destinationVC.selectedTitleID = chosenUUID
+        }
+    }
 }
