@@ -79,6 +79,8 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
                                         mapView.addAnnotation(annotation)
                                         nameText.text = annotationTitle
                                         commentText.text = annotationSubTitle
+                                        
+                                        locationManager.stopUpdatingLocation()
                                     }
                                 }
                             }
