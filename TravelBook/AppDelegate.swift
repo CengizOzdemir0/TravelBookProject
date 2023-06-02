@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TravelBook
 //
-//  Created by sys on 1.06.2023.
+//  Created by CengizOZDEMİR on 1.06.2023.
 //
 
 import UIKit
