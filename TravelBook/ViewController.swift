@@ -147,10 +147,10 @@ class ViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         } catch {
             print("error")
         }
-        
+        //Navigasyon kontrolleri yapılacak ?
         NotificationCenter.default.post(name: NSNotification.Name("NewPlace"), object: nil)
         navigationController?.popViewController(animated: true)
-        
+        // Eksik kaldı
     }
 }
 
